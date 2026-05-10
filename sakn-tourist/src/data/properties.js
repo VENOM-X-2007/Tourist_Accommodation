@@ -1,0 +1,103 @@
+export const properties = [
+  {
+    id: 1,
+    title: "شقة فاخرة في وسط الجزائر",
+    location: "الجزائر العاصمة، ديدوش مراد",
+    price: 8000,
+    rating: 4.8,
+    reviews: 124,
+    image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800",
+    type: "شقة",
+    guests: 4,
+    bedrooms: 2,
+    bathrooms: 1,
+    amenities: ["واي فاي", "تكييف", "مطبخ", "موقف سيارات"],
+    description: "شقة عصرية مفروشة بالكامل في قلب العاصمة الجزائرية، قريبة من جميع المرافق."
+  },
+  {
+    id: 2,
+    title: "فيلا رائعة في وهران",
+    location: "وهران، السانية",
+    price: 15000,
+    rating: 4.9,
+    reviews: 89,
+    image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800",
+    type: "فيلا",
+    guests: 8,
+    bedrooms: 4,
+    bathrooms: 3,
+    amenities: ["مسبح", "حديقة", "واي فاي", "مطبخ", "موقف سيارات"],
+    description: "فيلا فخمة مع مسبح خاص وإطلالة بانورامية على البحر."
+  },
+  {
+    id: 3,
+    title: "استوديو مريح في قسنطينة",
+    location: "قسنطينة، مركز المدينة",
+    price: 5000,
+    rating: 4.5,
+    reviews: 67,
+    image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800",
+    type: "استوديو",
+    guests: 2,
+    bedrooms: 1,
+    bathrooms: 1,
+    amenities: ["واي فاي", "تكييف", "مطبخ صغير"],
+    description: "استوديو أنيق ومثالي للمسافرين المنفردين أو الأزواج."
+  },
+  {
+    id: 4,
+    title: "منزل تقليدي في غرداية",
+    location: "غرداية، بني يزقن",
+    price: 10000,
+    rating: 4.7,
+    reviews: 45,
+    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800",
+    type: "منزل",
+    guests: 6,
+    bedrooms: 3,
+    bathrooms: 2,
+    amenities: ["واي فاي", "تكييف", "مطبخ", "تراس"],
+    description: "منزل صحراوي أصيل بتصميم تقليدي مذهل في قلب ميزاب."
+  },
+  {
+    id: 5,
+    title: "شقة مطلة على البحر في بجاية",
+    location: "بجاية، ميناء البحيرة",
+    price: 12000,
+    rating: 4.9,
+    reviews: 156,
+    image: "https://images.unsplash.com/photo-1515263487990-61b07816b324?w=800",
+    type: "شقة",
+    guests: 5,
+    bedrooms: 3,
+    bathrooms: 2,
+    amenities: ["واي فاي", "تكييف", "مطبخ", "شرفة", "موقف سيارات"],
+    description: "شقة رائعة مع إطلالة مباشرة على البحر الأبيض المتوسط."
+  },
+  {
+    id: 6,
+    title: "ريفي هادئ في تيبازة",
+    location: "تيبازة، شنوة",
+    price: 18000,
+    rating: 4.8,
+    reviews: 78,
+    image: "https://images.unsplash.com/photo-1580587771525-78b9dba3b91d?w=800",
+    type: "فيلا",
+    guests: 10,
+    bedrooms: 5,
+    bathrooms: 4,
+    amenities: ["مسبح", "حديقة", "واي فاي", "مطبخ", "موقف سيارات", "شواء"],
+    description: "فيلا ريفية واسعة مثالية للعائلات والمجموعات الكبيرة."
+  }
+];
+
+export const cities = [
+  { name: "الجزائر", count: 156 },
+  { name: "وهران", count: 89 },
+  { name: "قسنطينة", count: 67 },
+  { name: "عنابة", count: 45 },
+  { name: "بجاية", count: 78 },
+  { name: "تيزي وزو", count: 54 },
+  { name: "سطيف", count: 43 },
+  { name: "ورقلة", count: 32 }
+];
