@@ -1,0 +1,194 @@
+{
+  "app": {
+    "name": "Sakn Algérie",
+    "tagline": "Découvrez les meilleurs biens immobiliers en Algérie"
+  },
+  "nav": {
+    "home": "Accueil",
+    "properties": "Propriétés",
+    "about": "À propos",
+    "contact": "Contact",
+    "login": "Connexion",
+    "register": "S'inscrire",
+    "logout": "Déconnexion",
+    "dashboard": "Tableau de bord",
+    "profile": "Profil",
+    "myBookings": "Mes réservations",
+    "addProperty": "Ajouter une propriété"
+  },
+  "home": {
+    "hero": {
+      "title": "Trouvez votre maison idéale en Algérie",
+      "subtitle": "Plateforme de confiance pour la réservation de biens immobiliers dans toutes les régions d'Algérie",
+      "search": "Rechercher une propriété...",
+      "btn": "Explorer maintenant"
+    },
+    "featured": {
+      "title": "Propriétés en vedette",
+      "subtitle": "Découvrez les meilleures propriétés disponibles"
+    },
+    "stats": {
+      "properties": "Propriétés",
+      "cities": "Villes",
+      "users": "Utilisateurs",
+      "bookings": "Réservations"
+    }
+  },
+  "property": {
+    "details": "Détails de la propriété",
+    "price": "Prix",
+    "perNight": "/nuit",
+    "bedrooms": "Chambres",
+    "bathrooms": "Salles de bain",
+    "guests": "Invités",
+    "area": "Surface",
+    "amenities": "Équipements",
+    "location": "Emplacement",
+    "description": "Description",
+    "photos": "Photos",
+    "rules": "Règles de la maison",
+    "cancellation": "Politique d'annulation",
+    "book": "Réserver maintenant",
+    "contact": "Contacter le propriétaire",
+    "reviews": "Avis",
+    "noReviews": "Pas encore d'avis",
+    "writeReview": "Écrire un avis",
+    "available": "Disponible",
+    "notAvailable": "Non disponible"
+  },
+  "auth": {
+    "login": {
+      "title": "Connexion",
+      "email": "Adresse e-mail",
+      "password": "Mot de passe",
+      "forgot": "Mot de passe oublié?",
+      "noAccount": "Pas de compte?",
+      "btn": "Se connecter",
+      "success": "Connexion réussie",
+      "error": "Identifiants incorrects"
+    },
+    "register": {
+      "title": "Créer un compte",
+      "name": "Nom complet",
+      "email": "Adresse e-mail",
+      "phone": "Numéro de téléphone",
+      "password": "Mot de passe",
+      "confirmPassword": "Confirmer le mot de passe",
+      "agree": "J'accepte les termes et conditions",
+      "haveAccount": "Déjà un compte?",
+      "btn": "S'inscrire",
+      "success": "Compte créé avec succès",
+      "passwordMismatch": "Les mots de passe ne correspondent pas",
+      "emailExists": "L'email est déjà utilisé"
+    },
+    "reset": {
+      "title": "Récupérer le mot de passe",
+      "email": "Adresse e-mail",
+      "btn": "Envoyer le lien de récupération",
+      "success": "Lien de récupération envoyé à votre email",
+      "backToLogin": "Retour à la connexion"
+    }
+  },
+  "profile": {
+    "title": "Profil",
+    "edit": "Modifier le profil",
+    "save": "Enregistrer les modifications",
+    "cancel": "Annuler",
+    "name": "Nom",
+    "email": "Adresse e-mail",
+    "phone": "Numéro de téléphone",
+    "address": "Adresse",
+    "city": "Ville",
+    "changePassword": "Changer le mot de passe",
+    "currentPassword": "Mot de passe actuel",
+    "newPassword": "Nouveau mot de passe",
+    "confirmNewPassword": "Confirmer le nouveau mot de passe",
+    "updateSuccess": "Profil mis à jour avec succès",
+    "updateError": "Erreur lors de la mise à jour"
+  },
+  "booking": {
+    "title": "Réservation",
+    "checkIn": "Date d'arrivée",
+    "checkOut": "Date de départ",
+    "guests": "Nombre d'invités",
+    "total": "Total",
+    "nights": "nuits",
+    "confirm": "Confirmer la réservation",
+    "cancel": "Annuler la réservation",
+    "success": "Réservation réussie",
+    "error": "Erreur lors de la réservation",
+    "pending": "En attente",
+    "confirmed": "Confirmée",
+    "cancelled": "Annulée"
+  },
+  "about": {
+    "title": "À propos de nous",
+    "description": "Sakn Algérie est une plateforme leader dans la réservation de biens immobiliers en Algérie",
+    "mission": "Notre mission",
+    "missionText": "Fournir la meilleure expérience de réservation immobilière via une plateforme sécurisée et fiable",
+    "vision": "Notre vision",
+    "visionText": "Être la première plateforme de réservation immobilière en Algérie",
+    "values": "Nos valeurs"
+  },
+  "contact": {
+    "title": "Nous contacter",
+    "name": "Nom",
+    "email": "Adresse e-mail",
+    "phone": "Numéro de téléphone",
+    "message": "Message",
+    "send": "Envoyer",
+    "success": "Message envoyé avec succès. Nous vous contacterons bientôt",
+    "error": "Erreur lors de l'envoi du message"
+  },
+  "footer": {
+    "about": "Sakn Algérie est une plateforme spécialisée dans la réservation de propriétés touristiques dans toutes les régions d'Algérie",
+    "quickLinks": "Liens rapides",
+    "contact": "Contactez-nous",
+    "followUs": "Suivez-nous",
+    "rights": "Tous droits réservés",
+    "privacy": "Politique de confidentialité",
+    "terms": "Termes et conditions"
+  },
+  "theme": {
+    "light": "Mode clair",
+    "dark": "Mode sombre"
+  },
+  "language": {
+    "ar": "العربية",
+    "fr": "Français",
+    "en": "English"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Une erreur est survenue",
+    "tryAgain": "Réessayer",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "add": "Ajouter",
+    "search": "Rechercher",
+    "filter": "Filtrer",
+    "sort": "Trier",
+    "noResults": "Aucun résultat",
+    "viewMore": "Voir plus",
+    "viewLess": "Voir moins"
+  },
+  "validation": {
+    "required": "Ce champ est requis",
+    "email": "Email invalide",
+    "phone": "Numéro de téléphone invalide",
+    "minLength": "Doit contenir au moins {{min}} caractères",
+    "maxLength": "Doit contenir moins de {{max}} caractères",
+    "passwordStrength": "Mot de passe très faible"
+  },
+  "errors": {
+    "404": "Page non trouvée",
+    "404Text": "Désolé, la page que vous recherchez n'existe pas",
+    "500": "Erreur du serveur",
+    "500Text": "Une erreur interne du serveur s'est produite",
+    "network": "Erreur de connexion réseau",
+    "unauthorized": "Accès non autorisé",
+    "forbidden": "Accès interdit"
+  }
+}

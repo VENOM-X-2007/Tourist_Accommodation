@@ -1,48 +1,80 @@
-import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
+import { Hop as Home, Mail, Phone, MapPin, ExternalLink } from 'lucide-react';
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <footer className="footer">
       <div className="container">
         <div className="footer-grid">
           <div className="footer-section">
-            <h3>🏠 سكن سياحي</h3>
-            <p>منصتك الأولى لإيجار الشقق والمنازل السياحية في الجزائر</p>
+            <Link to="/" className="logo" style={{ marginBottom: '1rem', display: 'inline-flex' }}>
+              <Home size={28} />
+              <span>{t('app.name')}</span>
+            </Link>
+            <p style={{
+              color: 'var(--text-secondary)',
+              fontSize: '0.875rem',
+              lineHeight: 1.6,
+              marginTop: '0.5rem'
+            }}>
+              {t('footer.about')}
+            </p>
             <div className="social-links">
-              <a href="#">فيسبوك</a>
-              <a href="#">إنستغرام</a>
-              <a href="#">تويتر</a>
+              <a href="#" className="social-link" aria-label="Facebook">
+                <ExternalLink size={18} />
+              </a>
+              <a href="#" className="social-link" aria-label="Instagram">
+                <ExternalLink size={18} />
+              </a>
+              <a href="#" className="social-link" aria-label="Twitter">
+                <ExternalLink size={18} />
+              </a>
             </div>
           </div>
+
           <div className="footer-section">
-            <h4>روابط سريعة</h4>
+            <h4>{t('footer.quickLinks')}</h4>
             <ul>
-              <li><a href="/properties">العقارات</a></li>
-              <li><a href="/about">من نحن</a></li>
-              <li><a href="/contact">اتصل بنا</a></li>
-              <li><a href="/faq">الأسئلة الشائعة</a></li>
+              <li><Link to="/properties">{t('nav.properties')}</Link></li>
+              <li><Link to="/about">{t('nav.about')}</Link></li>
+              <li><Link to="/contact">{t('nav.contact')}</Link></li>
             </ul>
           </div>
+
           <div className="footer-section">
-            <h4>المساعدة</h4>
+            <h4>{t('nav.legal')}</h4>
             <ul>
-              <li><a href="#">شروط الاستخدام</a></li>
-              <li><a href="#">سياسة الخصوصية</a></li>
-              <li><a href="#">الأمان والثقة</a></li>
-              <li><a href="#">مركز المساعدة</a></li>
+              <li><a href="#">{t('footer.privacy')}</a></li>
+              <li><a href="#">{t('footer.terms')}</a></li>
             </ul>
           </div>
+
           <div className="footer-section">
-            <h4>تواصل معنا</h4>
+            <h4>{t('footer.contact')}</h4>
             <ul>
-              <li>📧 info@sakn-tourist.dz</li>
-              <li>📞 +213 21 00 00 00</li>
-              <li>📍 الجزائر العاصمة، الجزائر</li>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <Mail size={16} />
+                <a href="mailto:info@sakn-algeria.dz">info@sakn-algeria.dz</a>
+              </li>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <Phone size={16} />
+                <a href="tel:+213555000000">+213 555 00 00 00</a>
+              </li>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <MapPin size={16} />
+                <span>Algiers, Algeria</span>
+              </li>
             </ul>
           </div>
         </div>
+
         <div className="footer-bottom">
-          <p>&copy; 2025 سكن سياحي. جميع الحقوق محفوظة.</p>
+          <p>
+            {new Date().getFullYear()} {t('app.name')}. {t('footer.rights')}
+          </p>
         </div>
       </div>
     </footer>

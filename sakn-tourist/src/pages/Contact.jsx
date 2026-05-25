@@ -1,120 +1,286 @@
-import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Mail, Phone, MapPin, Send, Clock, CircleAlert as AlertCircle, CircleCheck as CheckCircle } from 'lucide-react';
+import { supabase } from '../lib/supabase';
+import { sanitizeInput, validateEmail, rateLimit } from '../utils/validation';
 
 const Contact = () => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    subject: '',
-    message: ''
+    phone: '',
+    message: '',
   });
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!formData.name) {
+      newErrors.name = t('validation.required');
+    }
+
+    if (!formData.email) {
+      newErrors.email = t('validation.required');
+    } else if (!validateEmail(formData.email)) {
+      newErrors.email = t('validation.email');
+    }
+
+    if (!formData.message) {
+      newErrors.message = t('validation.required');
+    } else if (formData.message.length < 10) {
+      newErrors.message = t('validation.minLength', { min: 10 });
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: sanitizeInput(value) }));
+    setErrors((prev) => ({ ...prev, [name]: '' }));
+    setError('');
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert('شكراً لتواصلك معنا! سنرد عليك في أقرب وقت.');
-    setFormData({ name: '', email: '', subject: '', message: '' });
+
+    if (!rateLimit('contact', 3, 600000)) {
+      setError(t('contact.rateLimited'));
+      return;
+    }
+
+    if (!validateForm()) return;
+
+    setLoading(true);
+    setError('');
+
+    try {
+      const { error: insertError } = await supabase
+        .from('contact_messages')
+        .insert([{
+          name: formData.name,
+          email: formData.email.toLowerCase().trim(),
+          phone: formData.phone,
+          message: formData.message,
+        }]);
+
+      if (insertError) throw insertError;
+
+      setSuccess(true);
+      setFormData({ name: '', email: '', phone: '', message: '' });
+    } catch (err) {
+      setError(t('contact.error'));
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div className="contact-page">
-      <Navbar />
-      
-      <div className="container">
-        <div className="page-header">
-          <h1>اتصل بنا</h1>
-          <p>نحن هنا لمساعدتك والإجابة على جميع استفساراتك</p>
-        </div>
-
-        <div className="contact-grid">
-          <div className="contact-info">
-            <h2>معلومات التواصل</h2>
-            
-            <div className="contact-item">
-              <Mail size={24} />
-              <div>
-                <h3>البريد الإلكتروني</h3>
-                <p>info@sakn-tourist.dz</p>
-              </div>
-            </div>
-
-            <div className="contact-item">
-              <Phone size={24} />
-              <div>
-                <h3>الهاتف</h3>
-                <p>+213 21 00 00 00</p>
-              </div>
-            </div>
-
-            <div className="contact-item">
-              <MapPin size={24} />
-              <div>
-                <h3>العنوان</h3>
-                <p>الجزائر العاصمة، الجزائر</p>
-              </div>
-            </div>
-
-            <div className="office-hours">
-              <h3>ساعات العمل</h3>
-              <p>الأحد - الخميس: 8:00 ص - 6:00 م</p>
-              <p>الجمعة - السبت: 9:00 ص - 2:00 م</p>
-            </div>
+    <div>
+      <section className="section" style={{ paddingTop: '2rem' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <h1 className="section-title">{t('contact.title')}</h1>
+            <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
+              {t('contact.subtitle')}
+            </p>
           </div>
 
-          <div className="contact-form-container">
-            <h2>أرسل لنا رسالة</h2>
-            <form onSubmit={handleSubmit} className="contact-form">
-              <div className="form-group">
-                <label>الاسم الكامل</label>
-                <input
-                  type="text"
-                  value={formData.name}
-                  onChange={(e) => setFormData({...formData, name: e.target.value})}
-                  required
-                />
-              </div>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: '3rem',
+            marginBottom: '3rem'
+          }}>
+            <div>
+              <h2 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '1.5rem' }}>
+                {t('contact.info')}
+              </h2>
 
-              <div className="form-group">
-                <label>البريد الإلكتروني</label>
-                <input
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({...formData, email: e.target.value})}
-                  required
-                />
-              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
+                  <div style={{
+                    width: '48px',
+                    height: '48px',
+                    background: 'var(--primary-100)',
+                    borderRadius: '0.5rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0
+                  }}>
+                    <Mail size={24} color="var(--primary-600)" />
+                  </div>
+                  <div>
+                    <h3 style={{ fontWeight: 600, marginBottom: '0.25rem' }}>{t('contact.email')}</h3>
+                    <a href="mailto:info@sakn-algeria.dz" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>
+                      info@sakn-algeria.dz
+                    </a>
+                  </div>
+                </div>
 
-              <div className="form-group">
-                <label>الموضوع</label>
-                <input
-                  type="text"
-                  value={formData.subject}
-                  onChange={(e) => setFormData({...formData, subject: e.target.value})}
-                  required
-                />
-              </div>
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
+                  <div style={{
+                    width: '48px',
+                    height: '48px',
+                    background: 'var(--primary-100)',
+                    borderRadius: '0.5rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0
+                  }}>
+                    <Phone size={24} color="var(--primary-600)" />
+                  </div>
+                  <div>
+                    <h3 style={{ fontWeight: 600, marginBottom: '0.25rem' }}>{t('contact.phone')}</h3>
+                    <a href="tel:+213555000000" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>
+                      +213 555 00 00 00
+                    </a>
+                  </div>
+                </div>
 
-              <div className="form-group">
-                <label>الرسالة</label>
-                <textarea
-                  rows="5"
-                  value={formData.message}
-                  onChange={(e) => setFormData({...formData, message: e.target.value})}
-                  required
-                ></textarea>
-              </div>
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
+                  <div style={{
+                    width: '48px',
+                    height: '48px',
+                    background: 'var(--primary-100)',
+                    borderRadius: '0.5rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0
+                  }}>
+                    <MapPin size={24} color="var(--primary-600)" />
+                  </div>
+                  <div>
+                    <h3 style={{ fontWeight: 600, marginBottom: '0.25rem' }}>{t('contact.address')}</h3>
+                    <span style={{ color: 'var(--text-secondary)' }}>
+                      {t('contact.addressText')}
+                    </span>
+                  </div>
+                </div>
 
-              <button type="submit" className="btn btn-primary">
-                <Send size={18} />
-                إرسال الرسالة
-              </button>
-            </form>
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
+                  <div style={{
+                    width: '48px',
+                    height: '48px',
+                    background: 'var(--primary-100)',
+                    borderRadius: '0.5rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0
+                  }}>
+                    <Clock size={24} color="var(--primary-600)" />
+                  </div>
+                  <div>
+                    <h3 style={{ fontWeight: 600, marginBottom: '0.25rem' }}>{t('contact.hours')}</h3>
+                    <span style={{ color: 'var(--text-secondary)', display: 'block' }}>
+                      {t('contact.hoursWeekday')}
+                    </span>
+                    <span style={{ color: 'var(--text-secondary)' }}>
+                      {t('contact.hoursWeekend')}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div className="card">
+                <div className="card-body">
+                  <h2 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '1.5rem' }}>
+                    {t('contact.sendMessage')}
+                  </h2>
+
+                  {success && (
+                    <div className="alert alert-success" style={{ marginBottom: '1.5rem' }}>
+                      <CheckCircle size={18} />
+                      <span>{t('contact.success')}</span>
+                    </div>
+                  )}
+
+                  {error && (
+                    <div className="alert alert-error" style={{ marginBottom: '1.5rem' }}>
+                      <AlertCircle size={18} />
+                      <span>{error}</span>
+                    </div>
+                  )}
+
+                  <form onSubmit={handleSubmit}>
+                    <div className="form-group">
+                      <label htmlFor="name">{t('contact.name')}</label>
+                      <input
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        disabled={loading}
+                      />
+                      {errors.name && <p className="form-error">{errors.name}</p>}
+                    </div>
+
+                    <div className="form-group">
+                      <label htmlFor="email">{t('contact.email')}</label>
+                      <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        disabled={loading}
+                      />
+                      {errors.email && <p className="form-error">{errors.email}</p>}
+                    </div>
+
+                    <div className="form-group">
+                      <label htmlFor="phone">{t('contact.email')}</label>
+                      <input
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        disabled={loading}
+                      />
+                    </div>
+
+                    <div className="form-group">
+                      <label htmlFor="message">{t('contact.message')}</label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        rows="5"
+                        value={formData.message}
+                        onChange={handleChange}
+                        disabled={loading}
+                        style={{ resize: 'vertical' }}
+                      />
+                      {errors.message && <p className="form-error">{errors.message}</p>}
+                    </div>
+
+                    <button
+                      type="submit"
+                      className="btn btn-primary btn-block btn-lg"
+                      disabled={loading}
+                    >
+                      <Send size={18} />
+                      {loading ? t('common.loading') : t('contact.send')}
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-
-      <Footer />
+      </section>
     </div>
   );
 };

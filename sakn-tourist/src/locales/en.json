@@ -1,0 +1,194 @@
+{
+  "app": {
+    "name": "Sakn Algeria",
+    "tagline": "Discover the best properties in Algeria"
+  },
+  "nav": {
+    "home": "Home",
+    "properties": "Properties",
+    "about": "About",
+    "contact": "Contact",
+    "login": "Login",
+    "register": "Sign Up",
+    "logout": "Logout",
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "myBookings": "My Bookings",
+    "addProperty": "Add Property"
+  },
+  "home": {
+    "hero": {
+      "title": "Find Your Perfect Home in Algeria",
+      "subtitle": "Trusted platform for property bookings across all regions of Algeria",
+      "search": "Search for a property...",
+      "btn": "Explore Now"
+    },
+    "featured": {
+      "title": "Featured Properties",
+      "subtitle": "Discover the best available properties"
+    },
+    "stats": {
+      "properties": "Properties",
+      "cities": "Cities",
+      "users": "Users",
+      "bookings": "Bookings"
+    }
+  },
+  "property": {
+    "details": "Property Details",
+    "price": "Price",
+    "perNight": "/night",
+    "bedrooms": "Bedrooms",
+    "bathrooms": "Bathrooms",
+    "guests": "Guests",
+    "area": "Area",
+    "amenities": "Amenities",
+    "location": "Location",
+    "description": "Description",
+    "photos": "Photos",
+    "rules": "House Rules",
+    "cancellation": "Cancellation Policy",
+    "book": "Book Now",
+    "contact": "Contact Owner",
+    "reviews": "Reviews",
+    "noReviews": "No reviews yet",
+    "writeReview": "Write a Review",
+    "available": "Available",
+    "notAvailable": "Not Available"
+  },
+  "auth": {
+    "login": {
+      "title": "Login",
+      "email": "Email Address",
+      "password": "Password",
+      "forgot": "Forgot password?",
+      "noAccount": "No account?",
+      "btn": "Sign In",
+      "success": "Login successful",
+      "error": "Invalid credentials"
+    },
+    "register": {
+      "title": "Create Account",
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "agree": "I agree to the terms and conditions",
+      "haveAccount": "Already have an account?",
+      "btn": "Sign Up",
+      "success": "Account created successfully",
+      "passwordMismatch": "Passwords do not match",
+      "emailExists": "Email already in use"
+    },
+    "reset": {
+      "title": "Reset Password",
+      "email": "Email Address",
+      "btn": "Send Reset Link",
+      "success": "Reset link sent to your email",
+      "backToLogin": "Back to login"
+    }
+  },
+  "profile": {
+    "title": "Profile",
+    "edit": "Edit Profile",
+    "save": "Save Changes",
+    "cancel": "Cancel",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "city": "City",
+    "changePassword": "Change Password",
+    "currentPassword": "Current Password",
+    "newPassword": "New Password",
+    "confirmNewPassword": "Confirm New Password",
+    "updateSuccess": "Profile updated successfully",
+    "updateError": "Error updating profile"
+  },
+  "booking": {
+    "title": "Booking",
+    "checkIn": "Check-in Date",
+    "checkOut": "Check-out Date",
+    "guests": "Number of Guests",
+    "total": "Total",
+    "nights": "nights",
+    "confirm": "Confirm Booking",
+    "cancel": "Cancel Booking",
+    "success": "Booking confirmed",
+    "error": "Error during booking",
+    "pending": "Pending",
+    "confirmed": "Confirmed",
+    "cancelled": "Cancelled"
+  },
+  "about": {
+    "title": "About Us",
+    "description": "Sakn Algeria is a leading platform for property booking in Algeria",
+    "mission": "Our Mission",
+    "missionText": "Provide the best property booking experience through a secure and trusted platform",
+    "vision": "Our Vision",
+    "visionText": "To be the first and primary platform for property booking in Algeria",
+    "values": "Our Values"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "name": "Name",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "message": "Message",
+    "send": "Send",
+    "success": "Message sent successfully. We will contact you soon",
+    "error": "Error sending message"
+  },
+  "footer": {
+    "about": "Sakn Algeria is a platform specialized in booking tourist properties across all regions of Algeria",
+    "quickLinks": "Quick Links",
+    "contact": "Contact Us",
+    "followUs": "Follow Us",
+    "rights": "All rights reserved",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions"
+  },
+  "theme": {
+    "light": "Light Mode",
+    "dark": "Dark Mode"
+  },
+  "language": {
+    "ar": "العربية",
+    "fr": "Français",
+    "en": "English"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "tryAgain": "Try again",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "noResults": "No results",
+    "viewMore": "View More",
+    "viewLess": "View Less"
+  },
+  "validation": {
+    "required": "This field is required",
+    "email": "Invalid email",
+    "phone": "Invalid phone number",
+    "minLength": "Must be at least {{min}} characters",
+    "maxLength": "Must be less than {{max}} characters",
+    "passwordStrength": "Password is too weak"
+  },
+  "errors": {
+    "404": "Page not found",
+    "404Text": "Sorry, the page you are looking for does not exist",
+    "500": "Server error",
+    "500Text": "An internal server error occurred",
+    "network": "Network connection error",
+    "unauthorized": "Unauthorized access",
+    "forbidden": "Access forbidden"
+  }
+}
